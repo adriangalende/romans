@@ -1,0 +1,14 @@
+#MAVEN
+target/
+
+#IDE
+.classpath
+.project
+.idea/
+romans.iml
+
+#VSCODE
+.vscode/
+
+#Library
+.settings/
