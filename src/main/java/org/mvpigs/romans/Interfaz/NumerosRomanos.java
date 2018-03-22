@@ -11,9 +11,6 @@ public enum NumerosRomanos {
 
     private int valorDecimal;
 
-    private NumerosRomanos(){
-    }
-    
     private NumerosRomanos(int valorDecimal){
         this.valorDecimal = valorDecimal;
     }

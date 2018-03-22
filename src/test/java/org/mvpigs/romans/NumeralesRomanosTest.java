@@ -1,5 +1,6 @@
 package org.mvpigs.romans;
 
+import java.beans.Transient;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,5 +51,55 @@ public class NumeralesRomanosTest {
         }
         assertThat(total).isEqualTo(3);
     }
+
+    
+    @Test
+    public void testCombinaciones() {
+        //Combinaciones sacadas de wikipedia
+        List<String> combinaciones = new ArrayList();
+        List<Integer> numeros;
+        combinaciones.add("IV");
+        combinaciones.add("VI");
+        combinaciones.add("VII");
+        combinaciones.add("VIII");
+        combinaciones.add("IX");
+        combinaciones.add("XXXII");
+        combinaciones.add("XLIX");
+        combinaciones.add("XLV");
+        // Añado más número para probar
+        combinaciones.add("XXXIII");
+        combinaciones.add("CXLVII");
+        combinaciones.add("CCCLXV");
+        combinaciones.add("XCIV");
+        combinaciones.add("CCLXXXIX");
+        combinaciones.add("LXXVIII");
+        combinaciones.add("CCLVI");
+        combinaciones.add("CCCXCV");
+        combinaciones.add("CCXXVIII");
+        combinaciones.add("MCMXCVII");
+        combinaciones.add("CDLXXII");
+        combinaciones.add("MMX");
+        combinaciones.add("DCCCXCVIII");
+        combinaciones.add("MMMDXLVIII");
+        combinaciones.add("MMCMLXXI");
+        
+        int[] resultadoCombinaciones = { 4, 6, 7, 8, 9, 32, 49, 45, 33, 147, 365, 94, 289, 78, 256, 395, 228, 1997, 472,
+                2010, 898, 3548, 2971 };
+
+        int total;
+        int indice=0;
+
+        for (String testRomano:combinaciones){
+            total=0;
+            NumeralesRomanos.check(testRomano);
+            numeros = NumeralesRomanos.getListaNumerosDecimales();
+            total = numeros.stream().reduce(0, Integer::sum);
+            assertThat(total).isEqualTo(resultadoCombinaciones[indice]);
+            indice++;
+        }
+
+
+    }
+
 
 }
